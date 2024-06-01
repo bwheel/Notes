@@ -28,7 +28,7 @@ public class NotesController : Controller
     {
         if (!ModelState.IsValid)
         {
-            model.ErrorMessage = "Invalid Submission";
+            model.ErrorMessage = "Missing Content";
             return View(model);
         }
 
