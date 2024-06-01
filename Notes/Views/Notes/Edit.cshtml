@@ -1,0 +1,21 @@
+@model EditNoteViewModel
+@{
+    ViewData["Title"] = "Notes";
+}
+<div class="row">
+    <div class="col">
+        <form asp-action="Edit">
+            <div class="mb-3">
+                <label for="content" class="form-label lead ms-2 mb-0 fs-6 fst-italic">Jot it down...</label>
+                <textarea class="form-control" asp-for="Content" id="content" rows="30"></textarea>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <button class="btn btn-primary" type="submit">
+                Save Jot</button>
+            @if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+            {
+                <p class="lead text-danger">@Model.ErrorMessage</p>
+            }
+        </form>
+    </div>
+</div>
