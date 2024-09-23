@@ -8,8 +8,8 @@
             "name": "C#: Notes Debug",
             "type": "dotnet",
             "request": "launch",
-            "projectPath": "${workspaceFolder}/Notes/Notes.csproj",
-            "preLaunchTask": "npm: build"
+            "projectPath": "${workspaceFolder}/src/Notes/Notes.csproj",
+            "preLaunchTask": "StaticAssets: build"
         }
     ]
 }

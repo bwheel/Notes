@@ -2,21 +2,54 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"type": "npm",
-			"script": "build",
-			"group": "build",
-			"problemMatcher": [],
-			"label": "npm: watch",
-			"detail": "webpack --watch --mode development",
-			"isBackground": true
+			"type": "docker-compose",
+			"label": "start database",
+			"dockerCompose": {
+				"up": {
+					"detached": true,
+					"build": true
+				},
+				"files": [
+					"${workspaceFolder}/ci/docker-compose.yml"
+				]
+			},
 		},
 		{
 			"type": "npm",
 			"script": "build",
 			"group": "build",
 			"problemMatcher": [],
-			"label": "npm: build",
-			"detail": "webpack --mode development"
+			"label": "StaticAssets: watch",
+			"detail": "webpack --watch --mode development",
+			"isBackground": true,
+			"options": {
+				"cwd": "./src/Notes/"
+			}
+		},
+		{
+			"type": "npm",
+			"script": "build",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "StaticAssets: build",
+			"detail": "webpack --mode development",
+			"options": {
+				"cwd": "./src/Notes/"
+			},
+			"dependsOn": [
+				"npm: install"
+			]
+		},
+		{
+			"type": "shell",
+			"label": "npm: install",
+			"command": [
+				"npm",
+				"install"
+			],
+			"options": {
+				"cwd": "./src/Notes/"
+			}
 		}
 	]
 }
