@@ -10,8 +10,10 @@
                 <textarea class="form-control" asp-for="Content" id="content" rows="30"></textarea>
             </div>
             <input type="hidden" asp-for="Id" />
+            <a href="@Url.Action("Create")" class="btn btn-primary">New Jot</a>
             <button class="btn btn-primary" type="submit">
-                Save Jot</button>
+                Update Jot</button>
+            <p id="expireAtDate" class="small"> @Model.ExpirationIn.ToString("hh\\:mm\\:ss")</p> @*TODO: decrement on the client*@
             @if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
             {
                 <p class="lead text-danger">@Model.ErrorMessage</p>

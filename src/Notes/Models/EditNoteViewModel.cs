@@ -10,5 +10,8 @@ public class EditNoteViewModel
     [Required(AllowEmptyStrings = true)]
     public required string Content { get; set; }
 
+    [Required(AllowEmptyStrings = true)]
+    public TimeSpan ExpirationIn { get; set; }
+
     public string? ErrorMessage { get; set; }
 }

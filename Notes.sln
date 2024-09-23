@@ -5,12 +5,14 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7BCF033F-6D5E-48ED-B3E6-0DACA5FCB208}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes", "src\Notes\Notes.csproj", "{B50CFA5B-E82B-4DBD-9A99-03F8EBE7F4EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notes", "src\Notes\Notes.csproj", "{B50CFA5B-E82B-4DBD-9A99-03F8EBE7F4EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ci", "ci", "{E2CAD725-DD96-4ED4-968B-78874FBECD0B}"
+	ProjectSection(SolutionItems) = preProject
+		ci\docker-compose.yml = ci\docker-compose.yml
+	EndProjectSection
 EndProject
 Global
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
@@ -32,6 +34,9 @@ Global
 		{B50CFA5B-E82B-4DBD-9A99-03F8EBE7F4EE}.Release|x64.Build.0 = Release|Any CPU
 		{B50CFA5B-E82B-4DBD-9A99-03F8EBE7F4EE}.Release|x86.ActiveCfg = Release|Any CPU
 		{B50CFA5B-E82B-4DBD-9A99-03F8EBE7F4EE}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B50CFA5B-E82B-4DBD-9A99-03F8EBE7F4EE} = {7BCF033F-6D5E-48ED-B3E6-0DACA5FCB208}

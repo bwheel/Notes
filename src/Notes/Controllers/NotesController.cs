@@ -1,8 +1,14 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Notes.Data.Dao;
 using Notes.Models;
 using Notes.Services;
 using Notes.Services.NotesService;
+using Org.BouncyCastle.Utilities.Encoders;
+using System.Net;
+using System.Text;
+using System.Text.Encodings.Web;
 
 namespace Notes.Controllers;
 
@@ -32,7 +38,6 @@ public class NotesController : Controller
             return View(model);
         }
 
-
         var note = await _notesService.Create(model.Content, token);
         if (note == null)
         {
@@ -40,13 +45,21 @@ public class NotesController : Controller
             return View(model);
         }
 
-        return RedirectToAction("Edit", "Notes", new { note.Id });
+        var url = Base64UrlTextEncoder.Encode(Encoding.UTF8.GetBytes( note.Id));
+         return Redirect(url);
     }
 
 
-    [HttpGet("/{id}")]
-    public async Task<IActionResult> Edit([FromRoute] string id, CancellationToken token, [FromQuery] string? returnUrl = null)
+    [HttpGet("/{idEncoded}")]
+    public async Task<IActionResult> Edit([FromRoute] string idEncoded, CancellationToken token, [FromQuery] string? returnUrl = null)
     {
+        var id = Encoding.UTF8.GetString(Base64UrlTextEncoder.Decode(idEncoded));
+        if(id == null)
+        {
+            if (!string.IsNullOrWhiteSpace(returnUrl)) 
+                return Redirect(returnUrl);
+            return RedirectToAction("Create");
+        }
         var note = await _notesService.Get(id, token);
         if (note == null)
         {
@@ -54,7 +67,8 @@ public class NotesController : Controller
                 return Redirect(returnUrl);
             return RedirectToAction("Create");
         }
-        return View("Edit", new EditNoteViewModel { Id = note.Id, Content = note.Content });
+        var expirationIn = note.ExpireAt.Subtract(DateTime.UtcNow);
+        return View("Edit", new EditNoteViewModel { Id = note.Id, Content = note.Content, ExpirationIn = expirationIn });
     }
 
     [HttpPost("/{id}")]
