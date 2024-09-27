@@ -67,8 +67,7 @@ public class NotesController : Controller
                 return Redirect(returnUrl);
             return RedirectToAction("Create");
         }
-        var expirationIn = note.ExpireAt.Subtract(DateTime.UtcNow);
-        return View("Edit", new EditNoteViewModel { Id = note.Id, Content = note.Content, ExpirationIn = expirationIn });
+        return View("Edit", new EditNoteViewModel { Id = note.Id, Content = note.Content, ExpirationDate = note.ExpireAt });
     }
 
     [HttpPost("/{id}")]

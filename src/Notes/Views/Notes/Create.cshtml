@@ -6,15 +6,20 @@
     <div class="col">
         <form asp-action="Create">
             <div class="mb-3">
-                <label for="content" class="form-label lead ms-2 mb-0 fs-6 fst-italic">Jot it down...</label>
+                <label for="content" class="form-label lead ms-2 mb-0 fs-6 fst-italic">Jot it down for later...</label>
                 <textarea class="form-control" asp-for="Content" id="content" rows="40"></textarea>
             </div>
-            <button class="btn btn-primary" type="submit">
-                Save Jot</button>
             @if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
             {
-                <p class="lead text-danger">@Model.ErrorMessage</p>
+                <div class="text-danger">
+                    <p class="lead ">@Model.ErrorMessage</p>
+                </div>
             }
+            <button class="btn btn-icon btn-primary" type="submit">
+                <i class="fa fa-save" aria-hidden="true"></i>
+                <span class="btn-icon-divider"></span> <!-- Vertical Divider -->
+                Save
+            </button>
         </form>
     </div>
 </div>

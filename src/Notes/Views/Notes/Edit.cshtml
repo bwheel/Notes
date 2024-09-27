@@ -2,22 +2,42 @@
 @{
     ViewData["Title"] = "Notes";
 }
+<style>
+    .btn-icon-group {
+        display: flex; /* Use flexbox for button content */
+        align-items: center; /* Vertically center items */
+        justify-content: left; /* Horizontally center items */
+    }
+    .btn-icon-group-item {
+        margin: 0 0.1em;
+    }
+</style>
 <div class="row">
     <div class="col">
         <form asp-action="Edit">
             <div class="mb-3">
-                <label for="content" class="form-label lead ms-2 mb-0 fs-6 fst-italic">Jot it down...</label>
+                <label for="content" class="form-label lead ms-2 mb-0 fs-6 fst-italic">Jot it down for later...</label>
                 <textarea class="form-control" asp-for="Content" id="content" rows="30"></textarea>
             </div>
-            <input type="hidden" asp-for="Id" />
-            <a href="@Url.Action("Create")" class="btn btn-primary">New Jot</a>
-            <button class="btn btn-primary" type="submit">
-                Update Jot</button>
-            <p id="expireAtDate" class="small"> @Model.ExpirationIn.ToString("hh\\:mm\\:ss")</p> @*TODO: decrement on the client*@
             @if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
             {
                 <p class="lead text-danger">@Model.ErrorMessage</p>
             }
+            <input type="hidden" asp-for="Id" />
+            <div class="btn-icon-group">
+                <a class="btn btn-icon btn-primary btn-icon-group-item"
+                        href="@Url.Action("Create")">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    <span class="btn-icon-divider"></span>
+                    New
+                </a>
+                <button class="btn btn-icon btn-primary btn-icon-group-item"
+                    type="submit">
+                    <i class="fa fa-save" aria-hidden="true"></i>
+                    <span class="btn-icon-divider"></span>
+                    Save
+                </button>
+            </div>
         </form>
     </div>
 </div>
