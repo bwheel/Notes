@@ -1,0 +1,76 @@
+/* Reset and body layout */
+body {
+  margin: 0;
+  font-family: monospace;
+  background-color: #FDEDED;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* fill viewport */
+}
+
+/* Header */
+header {
+  padding: 0.5rem;
+  color: #256A6A;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Container around textarea for countdown overlay */
+.textarea-container {
+  position: relative;
+  flex: 1; /* fills remaining space between header/footer */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem; /* optional spacing */
+  box-sizing: border-box;
+  overflow: hidden; /* hide any scrollbars from overlay */
+}
+
+textarea#content {
+  flex: 1;
+  width: 100%;
+  margin: 0;
+  padding: 1.5rem 1rem 1rem 1rem; /* top, right, bottom, left */
+  border: 4px solid #256A6A;
+  border-radius: 0.45rem;
+  font-size: 1.2rem;
+  font-family: monospace;
+  resize: none;
+  box-sizing: border-box;
+  display: block;
+  overflow: auto;
+}
+
+
+/* Countdown overlay above textarea content */
+#countdown {
+  position: absolute;
+  bottom: 10px; /* inside textarea padding */
+  right: 15px;
+  font-size: 0.9em;
+  font-style: italic;
+  color: black;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+/* Footer */
+footer {
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #888;
+}

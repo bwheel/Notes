@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Paste</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Quick Note: Paste and share temporary notes easily.">
+    <meta name="author" content="Byron Wheeler">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>Quick Note</h1>
+    <h4>Link won't last long, so be quick...</h4>
+  </header>
+
+  <div class="textarea-container">
+    <textarea id="content">{{.Content}}</textarea>
+    <div id="countdown">expires in 15:00</div>
+  </div>
+
+  <input type="hidden" id="uuid" value="{{.UUID}}">
+  <footer>&copy; Byron Wheeler</footer>
+  <script defer src="/static/app.js"></script>
+</body>
+</html>
