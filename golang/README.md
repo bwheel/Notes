@@ -66,4 +66,4 @@ make clean
 
 ## License
 
-&copy; Byron Wheeler
+See the [LICENSE](LICENSE) file for details.
